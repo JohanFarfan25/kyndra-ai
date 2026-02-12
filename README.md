@@ -186,6 +186,15 @@ Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene d
 
 2. Configurar las variables de entorno (`.env`) dentro de la carpeta `/backend`.
 
+  NODE_ENV=development
+  PORT=3000
+  MONGO_URI=mongodb://admin:password123@localhost:27017/kyndra?authSource=admin
+  JWT_SECRET=supersecretkey
+  JWT_EXPIRES_IN=1d
+  OPENAI_API_KEY=your_openai_key_optional
+  USER_DEMO=user_demo
+  PASSWORD_DEMO=password_demo
+
 3. Levantar MongoDB con Docker.
 
 4. Instalar dependencias y ejecutar el backend (NestJS).
