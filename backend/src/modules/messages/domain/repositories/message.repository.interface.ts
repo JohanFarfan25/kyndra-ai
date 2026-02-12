@@ -7,4 +7,5 @@ import { Message } from '../message.entity';
 export interface IMessageRepository {
   save(message: Message): Promise<Message>;
   findAllByUser(userId: string): Promise<Message[]>;
+  deleteAllByUser(userId: string): Promise<void>;
 }

@@ -50,4 +50,12 @@ export class MongooseMessageRepository implements IMessageRepository {
       createdAt: doc.createdAt,
     }));
   }
+
+  /**
+   * Elimina todos los mensajes de un usuario
+   * @author Johan Alexander Farfan Sierra <johanfarfan25@gmail.com>
+   */
+  async deleteAllByUser(userId: string): Promise<void> {
+    await this.messageModel.deleteMany({ userId }).exec();
+  }
 }
