@@ -204,6 +204,8 @@ Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene d
 
 6. Abrir el navegador en: http://localhost:4200
 
+## Documentación Apis Postman Back
+https://documenter.getpostman.com/view/13835511/2sBXcBmMj3
 
 ## Conclusión
 
