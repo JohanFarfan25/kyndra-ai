@@ -19,6 +19,7 @@
 
 ### Diagrama de flujo
 
+<img width="871" height="511" alt="Diagrama de flujo" src="https://github.com/user-attachments/assets/8a1e3a9d-301f-42a2-8343-3d9b48dca5ab" />
 
 (img propia)
 El servicio de aplicación inyecta una dependencia de la interfaz del repositorio (principio de inversión de dependencias), lo que permite cambiar la implementación sin afectar la lógica de negocio.
