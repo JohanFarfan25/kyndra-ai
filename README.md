@@ -25,6 +25,8 @@
 El servicio de aplicación inyecta una dependencia de la interfaz del repositorio (principio de inversión de dependencias), lo que permite cambiar la implementación sin afectar la lógica de negocio.
 
 Específico
+
+```bash
 POST /messages
   │
   ├─► ValidationPipe (class-validator)
@@ -59,7 +61,7 @@ GET /messages
   │                └─► MongoDB
   │
   └─► Respuesta 200 OK (array de mensajes)
-
+```
 
   # Seguridad y Manejo de Sesión
 
@@ -182,10 +184,15 @@ Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene d
 
 (Esta sección se detalla en la guía técnica paso a paso, pero se resume en el README)
 
-1. Clonar el repositorio.
+1. Clonar el repositorio. 
+
+```bash
+  git clone https://github.com/JohanFarfan25/kyndra-ai.git
+```
 
 2. Configurar las variables de entorno (`.env`) dentro de la carpeta `/backend`.
 
+```bash
   NODE_ENV=development
   PORT=3000
   MONGO_URI=mongodb://admin:password123@localhost:27017/kyndra?authSource=admin
@@ -195,12 +202,29 @@ Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene d
   OPENAI_MODEL=your_model_ai
   USER_DEMO=user_demo
   PASSWORD_DEMO=password_demo
+```
 
 3. Levantar MongoDB con Docker.
 
+```bash
+  docker-compose up -d
+```
+
 4. Instalar dependencias y ejecutar el backend (NestJS).
 
+```bash
+  cd backend
+  npm install
+  npm run start:dev
+```
+
 5. Instalar dependencias y ejecutar el frontend (Angular).
+
+```bash
+  cd frontend
+  npm install
+  npm run start
+```
 
 6. Abrir el navegador en: http://localhost:4200
 
