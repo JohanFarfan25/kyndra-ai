@@ -192,6 +192,7 @@ Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene d
   JWT_SECRET=supersecretkey
   JWT_EXPIRES_IN=1d
   OPENAI_API_KEY=your_openai_key_optional
+  OPENAI_MODEL=your_model_ai
   USER_DEMO=user_demo
   PASSWORD_DEMO=password_demo
 
