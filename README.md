@@ -180,6 +180,123 @@ Docker solo para MongoDB => Si no se proporciona OPENAI_API_KEY, el servicio res
 
 Misma sesión para toda la app => Se asigna un userId fijo (demo) o se obtiene del login; esto evita complejidad innecesaria pero demuestra comprensión del manejo de sesión.
 
+
+## Prerrequisitos
+
+Para ejecutar el proyecto correctamente en entorno local, el sistema debe contar con las siguientes herramientas instaladas:
+
+### Node.js
+
+* Versión recomendada: >= 18.x
+
+* Incluye npm (Node Package Manager)
+
+Verificar instalación:
+
+* node -v
+* npm -v
+
+Descarga oficial:
+
+```bash
+https://nodejs.org/
+```
+
+### Docker
+
+* Requerido para ejecutar la base de datos MongoDB en contenedor.
+
+Verificar instalación:
+
+* docker -v
+
+Descarga oficial:
+
+```bash
+https://www.docker.com/products/docker-desktop/
+```
+
+### Docker Compose
+
+* Si se utiliza docker-compose.yml para levantar servicios:
+
+* docker compose version
+
+### Git
+
+* Para clonar el repositorio:
+
+* git --version
+
+Descarga oficial:
+
+```bash
+https://git-scm.com/
+```
+
+### Configuración de Inteligencia Artificial (OpenAI)
+
+El proyecto soporta dos modos de procesamiento:
+
+* Modo IA Real (con API Key)
+* Modo Mock (sin API Key)
+
+#### Modo IA Real (requiere OpenAI API Key)
+
+Si el evaluador o usuario dispone de una cuenta de pago en OpenAI y una API Key válida, puede habilitar el procesamiento real con IA.
+
+Paso 1: Crear archivo .env en el backend
+
+```bash
+  OPENAI_API_KEY=tu_api_key_aqui
+```
+
+Paso 2: Reiniciar el servidor
+
+El backend detectará automáticamente la variable de entorno y utilizará la integración real contra la API de OpenAI.
+
+En este modo:
+
+* El texto será enviado a la API de OpenAI
+* Se obtendrá una respuesta generada por IA
+* El resultado será persistido en MongoDB
+* El cliente recibirá el contenido procesado dinámicamente
+
+#### Modo Mock (fallback automático)
+
+Si no se define OPENAI_API_KEY en el .env, el sistema funciona completamente en modo simulado.
+
+En este modo:
+
+* No se realiza ninguna llamada externa
+* El procesamiento se realiza con una implementación mock del servicio de IA
+* Se mantiene el mismo flujo arquitectónico
+
+Se garantiza funcionamiento completo sin costos ni dependencias externas
+
+Esto permite:
+
+* Evaluar arquitectura sin necesidad de credenciales
+* Ejecutar el proyecto offline
+* Evitar consumo de API en entornos de prueba
+
+### Decisión Arquitectónica
+
+Se implementa un patrón de Inversión de Dependencias:
+
+* Existe una interfaz AIService
+* Hay dos implementaciones:
+    * OpenAIService
+    * MockAIService
+* La selección se realiza en tiempo de arranque según configuración
+
+Esto permite:
+
+* Extensibilidad futura (por ejemplo, integrar otra IA)
+* Separación de responsabilidades
+* Testeo aislado
+* Eliminación de dependencias rígidas
+
 ## Cómo ejecutar el proyecto
 
 (Esta sección se detalla en la guía técnica paso a paso, pero se resume en el README)
