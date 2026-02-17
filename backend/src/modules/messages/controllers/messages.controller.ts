@@ -40,7 +40,10 @@ export class MessagesController {
     return messages;
   }
 
-  // quiero que se eliminen todos los mensaje sde este usuario 
+  /**
+   * Elimina todos los mensajes de un usuario
+   * @author Johan Alexander Farfan Sierra <johanfarfan25@gmail.com>
+   */
   @Delete()
   async delete(@CurrentUser() user: any) {
     const messages = await this.deleteMessagesUseCase.execute(user.userId);
